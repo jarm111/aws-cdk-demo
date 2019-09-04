@@ -5,11 +5,44 @@ exports.handler = async function(event) {
 
   // const documentClient = new DynamoDB.DocumentClient();
 
-  return {
-    statusCode: 200,
+  if (event.path === '/' && event.httpMethod === 'GET') return getHome()
+  if (event.path === '/api/messages') {
+    if (event.httpMethod === 'GET') return getMessages()
+    if (event.httpMethod === 'POST') return postMessage()
+  }
+
+  return unknownEndpoint()
+};
+
+
+const getMessages = () => ({
+  statusCode: 200,
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    message: `Get all messages`
+  })
+})
+
+const postMessage = () => ({
+  statusCode: 201,
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    message: `Post message`
+  })
+})
+
+const getHome = () => ({
+  statusCode: 200,
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      message: `Hello, you've hit ${event.path}`
+      message: `Welcome to messages API, try GET/POST to /api/messages`
     })
-  };
-};
+})
+
+const unknownEndpoint = () => ({
+  statusCode: 404,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      error: `Unknown endpoint: ${event.path}`
+    })
+})
