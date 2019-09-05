@@ -48,7 +48,8 @@ const postMessage = async (body) => {
     TableName: process.env.MESSAGES_TABLE_NAME,
     Item: {
       id: (Math.random() * 10000).toString(),
-      content
+      content,
+      date: new Date().toISOString()
     }
   }
 
