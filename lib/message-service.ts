@@ -16,6 +16,9 @@ export class MessageService extends cdk.Construct {
       runtime: lambda.Runtime.NODEJS_10_X,
       handler: 'message-service.handler',
       code: lambda.Code.fromAsset('lambda'),
+      environment: {
+        MESSAGES_TABLE_NAME: table.tableName
+      }
     })
 
     table.grantReadWriteData(this.handler)
