@@ -9,12 +9,12 @@ AWS Cloud Development Kit (AWS CDK) = *open-source software development framewor
 
 ## Basics
 
-- everything is a construct: 
+- Everything is a construct: 
   - a single service
   - combination of services composed together
   - stack of constructs
   - app made of stack(s)
-- construct is a cloud component
+- Construct is kinda like a cloud component
 - AWS Construct Library: collection of easy to use constructs representing aws services
 - AWS CDK Command Line Interface (CLI): tool to interact with CDK apps
 
@@ -34,6 +34,7 @@ AWS Cloud Development Kit (AWS CDK) = *open-source software development framewor
 - delay of new features getting into CDK
 - new tech: lack of examples, tutorials and documentation
 - not everyone working with infrastructure might be familiar enough with code
+- apparently it's not guaranteed that same Cloudformation template will be generated across CDK versions and user accounts, which might lead to problems
 
 ## Useful resources
 
@@ -48,3 +49,5 @@ https://cdkworkshop.com/
 https://github.com/aws/aws-cdk
 
 https://aws.amazon.com/blogs/aws/aws-cloud-development-kit-cdk-typescript-and-python-are-now-generally-available/
+
+https://www.wolfe.id.au/2019/08/01/why-cdk/
